@@ -8,10 +8,38 @@
   <!-- Below we added some simple CSS to resize our image-->
   <style type="text/css">
 
-    .imageclass {
+body {
+  background:url(/Users/moha/DD/homework/week-4-game/assets/images/background.png);
+  
+  }
+
+ #bodycard {
+   background: whitesmoke;
+   width: 50%;
+   margin-left: 10px;
+ }
+ 
+ #display {
+   background: lightblue;
+   height: 80px;
+   width: 100px;
+   margin-left: 10px;
+   font-size: 25px;
+ }
+
+ #results {
+   background: yellow;
+   height: 80px;
+   width: 100px;
+   margin-left: 10px;
+ }
+
+.imageclass {
       width: 80px;
       height: 80px;
+      margin-right: 10px;
     }
+
 
 
   </style>  
@@ -31,29 +59,46 @@
 
 <div class="col-md-6"> 
 
-<div class="row" id="bodyCard"> 
+<div class="row" id="bodycard"> 
 
     <p>You will be given a random number at the start of the game </p>
 
-    <div id="crystals"></div>
+    <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
 
-  
+    <p>You win the game by matching your total score to a radom number, you lose the game if your total score goes above the random number </p>
+   
+    <p>The value of each crystal is hidden from you until you click on it</p>
+
+    <p>Each time the game starts, the game will change the value of each crystal</p>
+    
   </div>
 
-  <div class="row" id="display"> </div>
+  <br>
+  
+  <br>
+
+
+  <div class="row" id="dashboard"> 
+
+  <div class="col-md-6" id="display"> </div>
+  <div class="col-md-6" id="results"> 
+      <p>wins</p>
+      <p>losses</p>
+  </div>
+
+  </div>
+
+  <br>
+  
+  <br>
 
   <div class="row" id="crystalsImages"> </div>
   
-  <div class="col-md-3" id="crystalImage1"> </div>
-  <div class="col-md-3" id="crystalImage2"> </div>
-  <div class="col-md-3" id="crystalImage3"> </div>
-  <div class="col-md-3" id="crystalImage4"> </div>
-
+  <div class="row" id="score"> 
+ 
   </div>
 
-  <div class="row" id="score"> </div>
-
-  <div class="row" id="scorevalue"> </div>  
+  <div class="row" id="hidCrystalValue"> </div>  
 
   </div> 
 
@@ -84,51 +129,76 @@ $(document).ready(function() {
   var losses = 0;
   var score= 0;
   var counter =0;
+  var randomSelected = 0
   var min = 19;
   var max = 120;
-  var randomSelected = 0
+  var hidMin = 1;
+  var hidMax = 12;
+  
 
-  var randomHiddenValue = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; 
-  
-  
+
   var randomSelected = Math.floor(Math.random()*(max-min+1)+min);
-  console.log(randomSelected);
   $("#display").text(randomSelected); 
 
 
- var cr1 = $("#crystalImage1");
- var cr2 = $("#crystalImage2");
- var cr3 = $("#crystalImage3");
- var cr4 = $("#crystalImage4");
+  var randomHiddenValue1 = Math.floor(Math.random()*(hidMax-hidMin+1)+hidMin);
+  var randomHiddenValue2 = Math.floor(Math.random()*(hidMax-hidMin+1)+hidMin);
+  var randomHiddenValue3 = Math.floor(Math.random()*(hidMax-hidMin+1)+hidMin);
+  var randomHiddenValue4 = Math.floor(Math.random()*(hidMax-hidMin+1)+hidMin);
 
+
+  console.log(randomHiddenValue1);
+  console.log(randomHiddenValue2);
+
+  
+ var cr = $("#crystalsImages");
 
  //  placing the first image //
  var crystalImage1 = $("<img>");
  crystalImage1.addClass("imageclass");
  crystalImage1.attr("src", '/Users/moha/DD/homework/week-4-game/assets/images/image1.jpg');
- cr1.append(crystalImage1);
+ crystalImage1.attr("data-crystalvalue", randomHiddenValue1);
+ cr.append(crystalImage1);
 
  //  placing the second image //
  var crystalImage2 = $("<img>");
  crystalImage2.addClass("imageclass");
  crystalImage2.attr("src", '/Users/moha/DD/homework/week-4-game/assets/images/image2.jpg');
- cr2.append(crystalImage2);
+ crystalImage2.attr("data-crystalvalue", randomHiddenValue2);
+ cr.append(crystalImage2);
 
   //  placing the third image //
   var crystalImage3 = $("<img>");
  crystalImage3.addClass("imageclass");
  crystalImage3.attr("src", '/Users/moha/DD/homework/week-4-game/assets/images/image3.jpg');
- cr3.append(crystalImage3);
+ crystalImage3.attr("data-crystalvalue", randomHiddenValue3);
+ cr.append(crystalImage3);
 
  //  placing the fourth image //
  var crystalImage4 = $("<img>");
  crystalImage4.addClass("imageclass");
  crystalImage4.attr("src", '/Users/moha/DD/homework/week-4-game/assets/images/image4.jpg');
- cr4.append(crystalImage4);
+ crystalImage4.attr("data-crystalvalue", randomHiddenValue4);
+ cr.append(crystalImage4);
  
 
-// create 4 different classes for each picture // 
-  
+
+cr.on("click", ".imageclass", function() {
+
+var crystalValue1 = ($(this).attr("data-crystalvalue"));
+crystalValue1 = parseInt(crystalValue1);
+console.log("first guess" + crystalValue1);
+counter = crystalValue1;
+alert("New Score" + counter);
+
+var crystalValue2 = ($(this).attr("data-crystalvalue"));
+crystalValue2 = parseInt(crystalValue2);
+counter = crystalValue1+ crystalValue2;
+console.log("second pic random num is " + crystalValue2);
+alert("New Score" + counter);
+
+});
+
 
 
 }); 

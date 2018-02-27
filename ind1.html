@@ -135,17 +135,17 @@ $(document).ready(function() {
   var hidMin = 1;
   var hidMax = 12;
   
-
-  counter 
+  function resetRandSeleced () {  
+    counter=0;
   var randomSelected = Math.floor(Math.random()*(max-min+1)+min);
   $("#display").text(randomSelected); 
+  }
+
 
 
   var randomHiddenValue = Math.floor(Math.random()*(hidMax-hidMin+1)+hidMin);
 
 
-  console.log(randomHiddenValue1);
-  console.log(randomHiddenValue2);
 
   
  var cr = $("#crystalsImages");
@@ -154,28 +154,28 @@ $(document).ready(function() {
  var crystalImage1 = $("<img>");
  crystalImage1.addClass("imageclass");
  crystalImage1.attr("src", '/Users/moha/DD/homework/week-4-game/assets/images/image1.jpg');
- crystalImage1.attr("data-crystalvalue", randomHiddenValue1);
+ crystalImage1.attr("data-crystalvalue", randomHiddenValue);
  cr.append(crystalImage1);
 
  //  placing the second image //
  var crystalImage2 = $("<img>");
  crystalImage2.addClass("imageclass");
  crystalImage2.attr("src", '/Users/moha/DD/homework/week-4-game/assets/images/image2.jpg');
- crystalImage2.attr("data-crystalvalue", randomHiddenValue2);
+ crystalImage2.attr("data-crystalvalue", randomHiddenValue);
  cr.append(crystalImage2);
 
   //  placing the third image //
   var crystalImage3 = $("<img>");
  crystalImage3.addClass("imageclass");
  crystalImage3.attr("src", '/Users/moha/DD/homework/week-4-game/assets/images/image3.jpg');
- crystalImage3.attr("data-crystalvalue", randomHiddenValue3);
+ crystalImage3.attr("data-crystalvalue", randomHiddenValue);
  cr.append(crystalImage3);
 
  //  placing the fourth image //
  var crystalImage4 = $("<img>");
  crystalImage4.addClass("imageclass");
  crystalImage4.attr("src", '/Users/moha/DD/homework/week-4-game/assets/images/image4.jpg');
- crystalImage4.attr("data-crystalvalue", randomHiddenValue4);
+ crystalImage4.attr("data-crystalvalue", randomHiddenValue);
  cr.append(crystalImage4);
  
 
