@@ -129,21 +129,25 @@ $(document).ready(function() {
   var losses = 0;
   var score= 0;
   var counter =0;
+  var randomSelected = 0
   var min = 19;
   var max = 120;
   var hidMin = 1;
   var hidMax = 12;
-  var randomSelected = 0
+  
 
-  var randomHiddenValue1 = Math.floor(Math.random()*(hidMax-hidMin+1)+hidMin);
-  var randomHiddenValue2 = Math.floor(Math.random()*(hidMax-hidMin+1)+hidMin);
-  var randomHiddenValue3 = Math.floor(Math.random()*(hidMax-hidMin+1)+hidMin);
-  var randomHiddenValue4 = Math.floor(Math.random()*(hidMax-hidMin+1)+hidMin);
+  counter 
+  var randomSelected = Math.floor(Math.random()*(max-min+1)+min);
+  $("#display").text(randomSelected); 
+
+
+  var randomHiddenValue = Math.floor(Math.random()*(hidMax-hidMin+1)+hidMin);
+
 
   console.log(randomHiddenValue1);
   console.log(randomHiddenValue2);
 
-
+  
  var cr = $("#crystalsImages");
 
  //  placing the first image //
@@ -181,7 +185,7 @@ cr.on("click", ".imageclass", function() {
 var crystalValue1 = ($(this).attr("data-crystalvalue"));
 crystalValue1 = parseInt(crystalValue1);
 console.log("first guess" + crystalValue1);
-counter = crystalValue1 + crystalValue1;
+counter = crystalValue1;
 alert("New Score" + counter);
 
 var crystalValue2 = ($(this).attr("data-crystalvalue"));
@@ -192,8 +196,7 @@ alert("New Score" + counter);
 
 });
 
-var randomSelected = Math.floor(Math.random()*(max-min+1)+min);
-$("#display").text(randomSelected); 
+
 
 }); 
 
